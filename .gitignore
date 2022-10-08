@@ -1,0 +1,17 @@
+## backups
+*~
+*#
+*.orig
+
+## installer
+*.run
+
+## ignore output folder
+workspace
+resources
+
+## docker base image
+ubu*
+
+## docker environment
+.env
