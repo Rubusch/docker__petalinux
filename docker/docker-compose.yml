@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+    peta-2020.2:
+        container_name: peta-2020.2
+        image: ${USER}/peta-2020.2
+        build:
+            context: build_context
+            dockerfile: Dockerfile
+            args:
+                USER: "${USER}"
+                UID: "${UID}"
+                GID: "${GID}"
+        user: "${UID}:${GID}"    ## docker run --user=$USER
+        stdin_open: true         ## docker run -i
+        tty: true                ## docker run -t
+        #privileged: true
+        environment:
+          - USER
+        env_file:
+          - .env
+        volumes:
+          ## folders not need to be around
+          - ~/.gitconfig:/home/${USER}/.gitconfig:ro
+          - ~/.ssh:/home/${USER}/.ssh
+          - ./workspace:/home/${USER}/workspace
+          ## folder must be around
+          - type: bind
+            source: ./build_configs
+            target: /home/$USER/configs
