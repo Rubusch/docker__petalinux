@@ -3,7 +3,7 @@ version: '3.8'
 services:
     peta-2022.1:
         container_name: peta-2022.1
-        image: ${USER}/peta-2022.1:peta2022.1-DEVEL
+        image: ${USER}/peta-2022.1:peta2022.1-20221011
         build:
             context: build_context
             dockerfile: Dockerfile
