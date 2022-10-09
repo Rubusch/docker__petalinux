@@ -34,7 +34,7 @@ $ ./setup.sh
 Start and e.g. create a project from .xsa file copied to the workspace folder first (host).  
 ```
 $ cd ./docker
-$ docker-compose -f ./docker-compose.yml run --rm peta-2020.2 /bin/bash
+$ docker-compose -f ./docker-compose.yml run --rm peta-2022.1 /bin/bash
 
 docker$ cd ./workspace
 docker$ petalinux-create -t project --template zynqMP -n MyBoard
