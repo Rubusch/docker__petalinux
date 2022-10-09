@@ -7,7 +7,7 @@
 ## base image settings
 ARG USER="${USER}"
 ARG DOCKER_BASE="ubu1804"
-ARG DOCKER_BASE_TAG="ubu1804-DEVEL"
+ARG DOCKER_BASE_TAG="ubu1804-20230501"
 
 ################################################################################
 ## base image

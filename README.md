@@ -1,6 +1,6 @@
 [![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0.html)
 
-# Container for Petalinux
+# Container for Petalinux v2020.2
 
 Docker for Petalinux BSPs. Staged build on based on external base container.  
 
