@@ -3,7 +3,8 @@
 *#
 *.orig
 
-## installer
+## local adjustments and not tracked settings
+.petalinux-sys.env
 *.run
 
 ## ignore output folder
