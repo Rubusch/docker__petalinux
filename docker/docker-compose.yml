@@ -3,7 +3,7 @@ version: '3.8'
 services:
     peta-2020.2:
         container_name: peta-2020.2
-        image: ${USER}/peta-2020.2:peta2020.2-DEVEL
+        image: ${USER}/peta-2020.2:peta2020.2-20230401
         build:
             context: build_context
             dockerfile: Dockerfile
