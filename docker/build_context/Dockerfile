@@ -6,12 +6,12 @@
 ################################################################################
 ## base image settings
 ARG USER="${USER}"
-ARG DOCKER_BASE="ubu1804"
-ARG DOCKER_BASE_TAG="ubu1804-DEVEL"
+ARG DOCKER_BASE="ubu2004"
+ARG DOCKER_BASE_TAG="ubu2004-20230501"
 
 ################################################################################
 ## base image
-FROM ${USER}/${DOCKER_BASE}:${DOCKER_BASE_TAG} AS peta-2020.2
+FROM ${USER}/${DOCKER_BASE}:${DOCKER_BASE_TAG} AS peta-2022.2
 MAINTAINER Lothar Rubusch <l.rubusch@gmail.com>
 ENV DEBIAN_FRONTEND=noninteractive
 
@@ -35,7 +35,6 @@ RUN apt-get install -y \
 	google-perftools \
 	libegl1-mesa \
 	libsdl1.2-dev \
-	python \
 	pylint \
 	python3 \
 	python3-pip \

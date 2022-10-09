@@ -1,6 +1,6 @@
 [![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0.html)
 
-# Container for Petalinux
+# Container for Petalinux v2022.2
 
 Docker for Petalinux BSPs. Staged build on based on external base container.  
 
@@ -51,7 +51,7 @@ $ ./setup.sh
 ...or manually   
 ```
 $ cd ./docker
-$ docker-compose -f ./docker-compose.yml run --rm peta-2020.2 /bin/bash
+$ docker-compose -f ./docker-compose.yml run --rm peta-2022.2 /bin/bash
 
 docker$ cd ./workspace
 docker$ petalinux-create -t project --template zynqMP -n MyBoard
