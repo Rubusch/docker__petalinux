@@ -123,5 +123,3 @@ source "/home/${USER}/workspace/settings.sh"
 echo "setting environment"
 echo "PATH=${PATH}"
 echo
-
-
