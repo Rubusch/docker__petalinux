@@ -27,8 +27,8 @@ ARG USER="${USER}"
 USER root
 
 #RUN dpkg --add-architecture i386
-RUN apt update
-RUN apt install -y \
+RUN apt-get update
+RUN apt-get install -y \
 	expect \
 	zstd
 
