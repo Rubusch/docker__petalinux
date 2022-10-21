@@ -4,6 +4,11 @@
 
 Docker for Petalinux BSPs. Staged build on based on external base container.  
 
+!!! ATTENTION !!!  
+
+!!! Switch over to one of the git BRANCHes to build !!!  
+(if you need vivado, vitis and petalinux try https://github.com/Rubusch/docker__peta-vivado.git )  
+
 
 ## Tools Needed
 
