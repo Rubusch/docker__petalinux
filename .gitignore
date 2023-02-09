@@ -12,7 +12,7 @@ workspace
 resources
 
 ## docker base image
-ubu*
+docker-base
 
 ## docker environment
 .env

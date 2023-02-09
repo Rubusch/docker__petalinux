@@ -6,17 +6,22 @@ Docker for Petalinux BSPs. Staged build on based on external base container.
 
 !!! ATTENTION !!!  
 
-!!! Switch over to one of the git BRANCHes to build !!!  
-(if you need vivado, vitis and petalinux try https://github.com/Rubusch/docker__peta-vivado.git )  
+!!! Switch over to one of the git BRANCHes to build !!! 
+
+- [petalinux 2020.2](https://github.com/Rubusch/docker__petalinux/tree/peta2020.2-20230207)
+- [petalinux 2022.1](https://github.com/Rubusch/docker__petalinux/tree/peta2022.1-20230207)
+ 
+(if you need vivado, vitis and petalinux try **https://github.com/Rubusch/docker__peta-vivado.git** )  
 
 
-## Tools Needed
+## Preparation
 
+Tools needed  
 ```
 $ sudo apt-get install -y libffi-dev libssl-dev python3-dev python3-pyqt5 python3-pyqt5.qtwebengine python3 python3-pip
 $ pip3 install docker-compose
 ```
-Make sure, ``~/.local`` is within ``$PATH`` or re-link e.g. it to ``/usr/local``, make sure to have docker group setup correctly, e.g.  
+Make sure ``~/.local`` is within ``$PATH`` or re-link e.g. it to ``/usr/local``, make sure to have docker group setup correctly, e.g.  
 ```
 $ sudo usermod -aG docker $USER
 ```
