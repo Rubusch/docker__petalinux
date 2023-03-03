@@ -36,20 +36,25 @@ test -z "${DOWNLOADDIR}" && DOWNLOADDIR="${TOPDIR}/${DOCKERDIR}/build_context"
 BASE_IMAGE="$(grep "ARG DOCKER_BASE=" -r "${DOCKERDIR}/build_context/Dockerfile" | awk -F= '{ print $2 }' | tr -d '"')"
 BASE_IMAGE_FOLDER="docker-base"
 BASE_IMAGE_TAG="$(grep "ARG DOCKER_BASE_TAG" -r "${DOCKERDIR}/build_context/Dockerfile" | awk -F= '{ print $2 }' | tr -d '"')"
-IMAGE="$( grep "^FROM" -HIrn ${DOCKERDIR}/build_context/Dockerfile | awk '{ print $NF }' )" 
+IMAGE="$( grep "^FROM" -HIrn ${DOCKERDIR}/build_context/Dockerfile | awk '{ print $NF }' )"
 VERSION="$( echo ${IMAGE} | awk -F'-' '{print $NF}' )"
 
 ## assure base image container
-CONTAINER="$(docker images | grep "${BASE_IMAGE}" | grep "${BASE_IMAGE_TAG}" | awk '{print $3}')"
-if [ -z "${CONTAINER}" ]; then
-	DO_BUILD=1
+CONTAINER_BASE="$(docker images | grep "${BASE_IMAGE}" | grep "${BASE_IMAGE_TAG}" | awk '{print $3}')" || true
+CONTAINER="$(docker images | grep "${IMAGE}")" || true
+
+if [ -z "${CONTAINER_BASE}" ]; then
 	DO_BUILDBASE=1
-	test -f ${TOPDIR}/${DOCKERDIR}/build_context/petalinux-v${VERSION}-*-installer.run || die "No petalinux installer provided! Please, put a petalinux-v${VERSION}-*-installer.run file in ${DOWNLOADDIR}"
 else
+    if [ -z "${CONTAINER}" ]; then
+	test -f ${TOPDIR}/${DOCKERDIR}/build_context/petalinux-v${VERSION}-*-installer.run || die "No petalinux installer provided! Please, put a petalinux-v${VERSION}-*-installer.run file in ${DOWNLOADDIR}"
+	DO_BUILD=1
+    else
 	cd "${DOCKERDIR}"
 	test -f .env || do_env
 	docker-compose -f ./docker-compose.yml run --rm "${IMAGE}" /bin/bash
 	exit 0
+    fi
 fi
 
 ## build
