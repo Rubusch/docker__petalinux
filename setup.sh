@@ -45,6 +45,7 @@ CONTAINER="$(docker images | grep "${IMAGE}")" || true
 
 if [ -z "${CONTAINER_BASE}" ]; then
 	DO_BUILDBASE=1
+	DO_BUILD=1
 else
 	if [ -z "${CONTAINER}" ]; then
 		test -f ${TOPDIR}/${DOCKERDIR}/build_context/petalinux-v${VERSION}-*-installer.run || die "No petalinux installer provided! Please, put a petalinux-v${VERSION}-*-installer.run file in ${DOWNLOADDIR}"
