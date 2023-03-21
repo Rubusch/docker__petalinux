@@ -43,12 +43,12 @@ VERSION="$( echo ${IMAGE} | awk -F'-' '{print $NF}' )"
 CONTAINER_BASE="$(docker images | grep "${BASE_IMAGE}" | grep "${BASE_IMAGE_TAG}" | awk '{print $3}')" || true
 CONTAINER="$(docker images | grep "${IMAGE}")" || true
 
+## evaluate
 if [ -z "${CONTAINER_BASE}" ]; then
 	DO_BUILDBASE=1
 	DO_BUILD=1
 else
 	if [ -z "${CONTAINER}" ]; then
-		test -f ${TOPDIR}/${DOCKERDIR}/build_context/petalinux-v${VERSION}-*-installer.run || die "No petalinux installer provided! Please, put a petalinux-v${VERSION}-*-installer.run file in ${DOWNLOADDIR}"
 		DO_BUILD=1
 	else
 		cd "${DOCKERDIR}"
@@ -56,6 +56,11 @@ else
 		docker-compose -f ./docker-compose.yml run --rm "${IMAGE}" /bin/bash
 		exit 0
 	fi
+fi
+
+## check
+if [ -n "${DO_BUILD}" ]; then
+	test -f ${TOPDIR}/${DOCKERDIR}/build_context/petalinux-v${VERSION}-*-installer.run || die "No petalinux installer provided! Please, put a petalinux-v${VERSION}-*-installer.run file in ${DOWNLOADDIR}"
 fi
 
 ## build
