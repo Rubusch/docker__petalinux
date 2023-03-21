@@ -14,9 +14,9 @@ Docker for Petalinux BSPs. Staged build on based on external base container.
 (if you need vivado, vitis and petalinux try **https://github.com/Rubusch/docker__peta-vivado.git** )  
 
 
-## Preparation
+## Requirements
 
-Tools needed  
+Make sure docker-compose is installed  
 ```
 $ sudo apt-get install -y libffi-dev libssl-dev python3-dev python3-pyqt5 python3-pyqt5.qtwebengine python3 python3-pip
 $ pip3 install docker-compose
@@ -42,6 +42,11 @@ $ ./setup.sh
 ## Usage
 
 Start and e.g. create a project from .xsa file copied to the workspace folder first (host).  
+```
+$ ./setup.sh
+```
+
+...or manually   
 ```
 $ cd ./docker
 $ docker-compose -f ./docker-compose.yml run --rm peta-2020.2 /bin/bash
