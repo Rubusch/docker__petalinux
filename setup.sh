@@ -46,15 +46,15 @@ CONTAINER="$(docker images | grep "${IMAGE}")" || true
 if [ -z "${CONTAINER_BASE}" ]; then
 	DO_BUILDBASE=1
 else
-    if [ -z "${CONTAINER}" ]; then
-	test -f ${TOPDIR}/${DOCKERDIR}/build_context/petalinux-v${VERSION}-*-installer.run || die "No petalinux installer provided! Please, put a petalinux-v${VERSION}-*-installer.run file in ${DOWNLOADDIR}"
-	DO_BUILD=1
-    else
-	cd "${DOCKERDIR}"
-	test -f .env || do_env
-	docker-compose -f ./docker-compose.yml run --rm "${IMAGE}" /bin/bash
-	exit 0
-    fi
+	if [ -z "${CONTAINER}" ]; then
+		test -f ${TOPDIR}/${DOCKERDIR}/build_context/petalinux-v${VERSION}-*-installer.run || die "No petalinux installer provided! Please, put a petalinux-v${VERSION}-*-installer.run file in ${DOWNLOADDIR}"
+		DO_BUILD=1
+	else
+		cd "${DOCKERDIR}"
+		test -f .env || do_env
+		docker-compose -f ./docker-compose.yml run --rm "${IMAGE}" /bin/bash
+		exit 0
+	fi
 fi
 
 ## build
