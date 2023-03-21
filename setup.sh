@@ -36,12 +36,11 @@ test -z "${DOWNLOADDIR}" && DOWNLOADDIR="${TOPDIR}/${DOCKERDIR}/build_context"
 BASE_IMAGE="$(grep "ARG DOCKER_BASE=" -r "${DOCKERDIR}/build_context/Dockerfile" | awk -F= '{ print $2 }' | tr -d '"')"
 BASE_IMAGE_FOLDER="docker-base"
 BASE_IMAGE_TAG="$(grep "ARG DOCKER_BASE_TAG" -r "${DOCKERDIR}/build_context/Dockerfile" | awk -F= '{ print $2 }' | tr -d '"')"
-IMAGE="$( grep "^FROM" -HIrn ${DOCKERDIR}/build_context/Dockerfile | awk '{ print $NF }' )"
-VERSION="$( echo ${IMAGE} | awk -F'-' '{print $NF}' )"
-
-## assure base image container
+IMAGE="$( grep "^FROM" -r ${DOCKERDIR}/build_context/Dockerfile | awk '{ print $NF }' )"
+IMAGE_TAG="$( grep 'image: ${USER}/' -r ${DOCKERDIR}/docker-compose.yml | awk -F: '{ print $NF }' )"
+VERSION="$( echo ${IMAGE} | awk -F'-' '{ print $NF }' )"
 CONTAINER_BASE="$(docker images | grep "${BASE_IMAGE}" | grep "${BASE_IMAGE_TAG}" | awk '{print $3}')" || true
-CONTAINER="$(docker images | grep "${IMAGE}")" || true
+CONTAINER="$(docker images | grep "${IMAGE_TAG}")" || true
 
 ## evaluate
 if [ -z "${CONTAINER_BASE}" ]; then
