@@ -74,8 +74,6 @@ if [ -n "${DO_BUILDBASE}" ]; then
 fi
 if [ -n "${DO_BUILD}" ]; then
 	build "${DOCKERDIR}" "${DRYRUN}"
-	echo "!!! Docker finished, overwriting '${DOCKERDIR}/.env' !!!"
-	do_env
 fi
 
 echo "READY."
