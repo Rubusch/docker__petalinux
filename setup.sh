@@ -11,6 +11,7 @@ die()
 
 do_env()
 {
+	test -f .env && return || true
 	echo "UID=$(id -u)" > .env
 	echo "GID=$(id -g)" >> .env
 }
@@ -51,7 +52,7 @@ else
 		DO_BUILD=1
 	else
 		cd "${DOCKERDIR}"
-		test -f .env || do_env
+		do_env
 		docker-compose -f ./docker-compose.yml run --rm "${IMAGE}" /bin/bash
 		exit 0
 	fi
