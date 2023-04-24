@@ -69,9 +69,7 @@ if [ -n "${DO_BUILDBASE}" ]; then
 	git clone "https://github.com/Rubusch/docker__ubu.git" "${BASE_IMAGE_FOLDER}" || die "Could not clone base container repo"
 	cd "${BASE_IMAGE_FOLDER}"
 	git checkout "${BASE_IMAGE_TAG}"
-	cd "${DOCKERDIR}"
-	do_env
-	docker-compose up -d --remove-orphans
+	build "${DOCKERDIR}" "base"
 	cd "${TOPDIR}"
 fi
 if [ -n "${DO_BUILD}" ]; then
