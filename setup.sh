@@ -23,7 +23,7 @@ build()
 	cd "${1}"
 	do_env
 	if [ -n "${2}" ]; then
-		docker-compose build
+		docker-compose build --no-cache
 	else
 		docker-compose up --exit-code-from "${CONTAINER_NAME}"
 	fi
