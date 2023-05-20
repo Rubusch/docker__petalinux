@@ -12,6 +12,7 @@ Docker for Petalinux BSPs. Staged build on based on external base container.
 - [petalinux 2020.2](https://github.com/Rubusch/docker__petalinux/tree/peta2020.2-20230501)
 - [petalinux 2022.1](https://github.com/Rubusch/docker__petalinux/tree/peta2022.1-20230501)
 - [petalinux 2022.2](https://github.com/Rubusch/docker__petalinux/tree/peta2022.2-20230501)
+- [petalinux 2023.1](https://github.com/Rubusch/docker__petalinux/tree/peta2023.1-20230601)
  
 (if you need vivado, vitis and petalinux try **https://github.com/Rubusch/docker__peta-vivado.git** )  
 
