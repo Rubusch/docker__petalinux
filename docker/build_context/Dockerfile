@@ -77,7 +77,11 @@ RUN apt-get install -y \
 	dpkg-dev:i386 \
 	ocl-icd-libopencl1 \
 	opencl-headers \
-	ocl-icd-opencl-dev
+	ocl-icd-opencl-dev \
+	python3-subunit \
+	mesa-common-dev \
+	liblz4-tool \
+	lz4
 
 ## GUI IDEs may require the following...
 RUN apt-get install -y \
