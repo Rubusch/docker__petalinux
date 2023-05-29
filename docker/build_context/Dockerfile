@@ -126,6 +126,10 @@ RUN rm -rf /home/$USER/scripts
 ## link config environment
 RUN rm -f /home/$USER/.petalinux-sys.env && ln -s ${MY_CONFIGS}/.petalinux-sys.env /home/$USER/
 
+## fix missing "python" link
+USER root
+RUN test -e /usr/bin/python || ln -s /usr/bin/python3 /usr/bin/python
+
 ################################################################################
 ## command mode
 USER $USER
